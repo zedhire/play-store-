@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottom Bar Navigation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            margin-top: 0px; /* المسافة بين الشريط السفلي والإطار */
+            margin-bottom: -55px;
+        }
+        .bottom-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            height: 60px;
+        }
+        .bottom-bar img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+        .bottom-bar img:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- إطار لعرض الشاشات -->
+    <iframe id="content-frame" src="games.html"></iframe>
+
+    <!-- شريط التنقل السفلي -->
+    <div class="bottom-bar">
+        <img id="image1" src="imgs/gm2.png" alt="Image 1" onclick="loadPage('games.html', this)">
+        <img id="image2" src="imgs/ap1.png" alt="Image 2" onclick="loadPage('apps.html', this)">
+        <img id="image3" src="imgs/kd1.png" alt="Image 3" onclick="loadPage('kids.html', this)">
+    </div>
+
+    <script>
+        // دالة لتحميل الصفحة داخل الإطار وتغيير الصور
+        function loadPage(page, button) {
+            document.getElementById('content-frame').src = page;
+            
+            // تحديث الصور حسب الصفحة المفتوحة
+            if (page === 'games.html') {
+                document.getElementById('image1').src = 'imgs/gm2.png';
+                document.getElementById('image2').src = 'imgs/ap1.png';
+                document.getElementById('image3').src = 'imgs/kd1.png';
+            } else if (page === 'apps.html') {
+                document.getElementById('image1').src = 'imgs/gm1.png';
+                document.getElementById('image2').src = 'imgs/ap2.png';
+                document.getElementById('image3').src = 'imgs/kd1.png';
+            } else if (page === 'kids.html') {
+                document.getElementById('image1').src = 'imgs/gm1.png';
+                document.getElementById('image2').src = 'imgs/ap1.png';
+                document.getElementById('image3').src = 'imgs/kd2.png';
+            }
+        }
+    </script>
+</body>
+</html>
